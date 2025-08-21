@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Nepal Clash] - Nepal’s Ultimate Esports Arena</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" type="image/png">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        :root {
+            --primary-bg: #0F172A;
+            --secondary-bg: #1E293B;
+            --text-primary: #E2E8F0;
+            --text-secondary: #94A3B8;
+            --accent-color: #FACC15;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png');
+            background-repeat: no-repeat;
+            background-position: top right;
+            background-size: 50vmax;
+            opacity: 0.06; /* Increased opacity */
+            mix-blend-mode: screen; /* Added for brightness */
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        .text-accent {
+            color: var(--accent-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #1E293B;
+            font-weight: 600;
+            padding: 12px 28px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-accent:hover {
+            background-color: #eab308;
+            border-color: #eab308;
+            color: #0F172A;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+        }
+        .navbar-brand .app-name {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .navbar .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .navbar .nav-link:hover, .navbar .nav-link.active {
+            color: var(--text-primary);
+        }
+        
+        .dropdown-menu {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown-item {
+            color: var(--text-secondary);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+        }
+        
+        /* Hero Section */
+        #hero {
+            padding: 140px 0 80px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        #hero .lead {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 550px;
+        }
+        
+        #hero .btn-secondary-custom {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        #hero .btn-secondary-custom:hover {
+            text-decoration: underline;
+        }
+        
+        .hero-mockup {
+            max-width: 85%;
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Game Slider */
+        .game-slider-section {
+            background-color: var(--secondary-bg);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .swiper-slide .game-card {
+            width: 280px;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .swiper-slide .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .swiper-slide-active .game-card {
+             box-shadow: 0 0 30px rgba(250, 204, 21, 0.2);
+        }
+
+        .swiper-slide:hover .game-card {
+            transform: translateY(-10px);
+        }
+
+        /* How it Works & Features */
+        .step-card, .feature-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card:hover, .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .step-card .step-numeral {
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+            font-size: 6rem;
+            font-weight: 800;
+            color: var(--primary-bg);
+            -webkit-text-stroke: 1px var(--border-color);
+            z-index: 0;
+            line-height: 1;
+        }
+        .step-card .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ */
+        .accordion-item {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+        }
+        .accordion-button {
+            background-color: var(--secondary-bg);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-bg);
+            color: var(--accent-color);
+            box-shadow: inset 0 -1px 0 var(--border-color);
+        }
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(250, 204, 21, 0.25);
+        }
+        .accordion-body {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Mobile Sticky Bar */
+        .mobile-download-bar {
+            background-color: var(--accent-color);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+            display: none; /* Hidden by default */
+        }
+        .mobile-download-bar a {
+            color: var(--primary-bg);
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 767.98px) {
+            .mobile-download-bar {
+                display: block;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-mockup {
+                margin-top: 3rem;
+                max-width: 100%;
+            }
+        }
+
+        /* Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Modal */
+        .modal-content {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+        }
+        .modal-header {
+             border-bottom: 1px solid var(--border-color);
+        }
+        .modal-footer {
+            border-top: 1px solid var(--border-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Sticky Header / Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="[Nepal Clash] Logo" class="me-2">
+                <span class="app-name">[Nepal Clash]</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How to Play</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#faqModal">FAQ</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#privacyPolicyModal">Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#termsConditionsModal">Terms & Conditions</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#fairPlayPolicyModal">Fair Play Policy</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#refundPolicyModal">Refund & Cancellation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="https://www.mediafire.com/file/3fvzb2yqybwwyon/Nepal_Clash_1.0.0_%25281%2529.apk/file?dkey=7r8pbf1wg13&r=1006" class="btn btn-accent d-none d-lg-block">Download App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="container-fluid">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start fade-in-up">
+                    <h1 class="display-3 fw-bolder mb-3">Nepal’s Ultimate <span class="text-accent">Esports Arena</span> is Here</h1>
+                    <p class="lead mb-4">
+                        Compete in daily tournaments for your favorite mobile games. Experience secure gameplay, instant withdrawals, and join a thriving community of Nepali gamers. Your next big win is just a tap away!
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start">
+                        <a href="https://www.mediafire.com/file/3fvzb2yqybwwyon/Nepal_Clash_1.0.0_%25281%2529.apk/file?dkey=7r8pbf1wg13&r=1006" class="btn btn-accent btn-lg">Download & Start Playing</a>
+                    </div>
+                     <p class="mt-3 mb-0 fw-bold"><span class="text-accent">Get NPR 5 FREE on Signup!</span></p>
+                </div>
+                <div class="col-lg-6 text-center fade-in-up" style="transition-delay: 200ms;">
+                    <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" class="hero-mockup" alt="App Mockup">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Game Slider Section -->
+    <section class="game-slider-section">
+        <div class="container text-center fade-in-up">
+            <h2 class="mb-5">Tournaments for Your Favorite Games</h2>
+            <div class="swiper game-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="game-card">
+                           <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="Game 1">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="game-card">
+                            <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="Game 2">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="game-card">
+                            <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="Game 3">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="game-card">
+                           <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="Game 1">
+                        </div>
+                    </div>
+                     <div class="swiper-slide">
+                         <div class="game-card">
+                            <img src="https://i.ibb.co/Q7zZsWg0/Picsart-25-08-20-00-27-59-710.png" alt="Game 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. "How It Works" (Three Steps) -->
+    <section id="how-it-works" class="container py-5 my-5">
+        <div class="text-center mb-5 fade-in-up">
+            <h2 class="display-5">Get Started in Three Easy Steps</h2>
+            <p class="lead text-secondary">Your journey from player to champion is simple.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 fade-in-up" style="transition-delay: 100ms;">
+                <div class="step-card h-100 text-center">
+                     <div class="step-numeral">01</div>
+                     <div class="card-content">
+                        <div class="icon-box"><i class="bi bi-download"></i></div>
+                        <h3 class="h4">Download & Register</h3>
+                        <p class="text-secondary">Get the app, create your account, and claim your NPR 5 signup bonus instantly.</p>
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-4 fade-in-up" style="transition-delay: 200ms;">
+                <div class="step-card h-100 text-center">
+                    <div class="step-numeral">02</div>
+                     <div class="card-content">
+                        <div class="icon-box"><i class="bi bi-trophy"></i></div>
+                        <h3 class="h4">Join a Tournament</h3>
+                        <p class="text-secondary">Browse daily contests for your favorite games, check the prize pool, and join a match.</p>
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-4 fade-in-up" style="transition-delay: 300ms;">
+                <div class="step-card h-100 text-center">
+                    <div class="step-numeral">03</div>
+                     <div class="card-content">
+                        <div class="icon-box"><i class="bi bi-joystick"></i></div>
+                        <h3 class="h4">Play, Win & Withdraw</h3>
+                        <p class="text-secondary">Show your skills, climb the leaderboard, and withdraw your winnings directly to your e-wallet.</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Features -->
+    <section id="features" class="container py-5 my-5">
+        <div class="text-center mb-5 fade-in-up">
+            <h2 class="display-5">Why Players Choose [Nepal Clash]</h2>
+             <p class="lead text-secondary">The ultimate platform built for Nepali gamers.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 fade-in-up" style="transition-delay: 100ms;">
+                <div class="feature-card d-flex align-items-start">
+                    <div class="icon-box me-4"><i class="bi bi-shield-check"></i></div>
+                    <div>
+                        <h3 class="h5">100% Secure & Fair Play</h3>
+                        <p class="text-secondary">Our platform uses advanced anti-cheat technology and secure payment gateways to ensure a safe and fair gaming experience for everyone.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in-up" style="transition-delay: 200ms;">
+                <div class="feature-card d-flex align-items-start">
+                    <div class="icon-box me-4"><i class="bi bi-wallet2"></i></div>
+                    <div>
+                        <h3 class="h5">Instant Withdrawals</h3>
+                        <p class="text-secondary">Get your winnings fast! We support major Nepali digital wallets like eSewa and Khalti for quick and hassle-free withdrawals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in-up" style="transition-delay: 300ms;">
+                <div class="feature-card d-flex align-items-start">
+                    <div class="icon-box me-4"><i class="bi bi-people-fill"></i></div>
+                    <div>
+                        <h3 class="h5">Generous Referral Program</h3>
+                        <p class="text-secondary">Invite your friends to join the action. Earn bonuses for every friend who signs up and plays on [Nepal Clash]. It's a win-win!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in-up" style="transition-delay: 400ms;">
+                <div class="feature-card d-flex align-items-start">
+                    <div class="icon-box me-4"><i class="bi bi-headset"></i></div>
+                    <div>
+                        <h3 class="h5">24/7 Customer Support</h3>
+                        <p class="text-secondary">Our dedicated support team is available around the clock to assist you with any questions or issues, ensuring a smooth gaming experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ (Accordion) -->
+    <section id="faq" class="container py-5 my-5 fade-in-up">
+        <div class="text-center mb-5">
+            <h2 class="display-5">Frequently Asked Questions</h2>
+        </div>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Is playing skill-based tournaments on [Nepal Clash] legal in Nepal?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, absolutely. The competitions on <span class="text-accent fw-bold">[Nepal Clash]</span> are skill-based games. The outcome of these games is determined by the player's skill, knowledge, and strategy, not by chance. According to the laws in Nepal, games of skill are considered legal activities. We operate in full compliance with local regulations to provide a secure and legitimate platform.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How do withdrawals work for users in Nepal?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Withdrawing your winnings is fast and easy. We primarily support popular digital wallets in Nepal, such as <strong>eSewa and Khalti</strong>. To withdraw, simply go to your wallet in the app, enter the amount you wish to withdraw, and choose your preferred payment method. Most withdrawal requests are processed instantly or within a few hours, ensuring you get your money quickly and securely.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Do you offer free tournaments or a sign-up bonus?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! We want to get you started right away. Every new user who registers on <span class="text-accent fw-bold">[Nepal Clash]</span> receives a <strong>free bonus of NPR 5</strong> in their wallet. You can use this bonus to enter tournaments and start winning real cash prizes without any initial deposit. We also host free-to-enter tournaments periodically, so keep an eye on the app for special events.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="text-center py-4">
+        <div class="container">
+            <p class="h5 mb-2">[Nepal Clash]</p>
+            <p class="text-secondary small">This is a real-money gaming platform. Please play responsibly. The games involve an element of financial risk and may be addictive. You must be 18 or older to play.</p>
+            <p class="text-secondary small">&copy; 2024 [Nepal Clash]. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- 8. Mobile-Only Sticky Download Bar -->
+    <div class="mobile-download-bar fixed-bottom">
+        <a href="https://www.mediafire.com/file/3fvzb2yqybwwyon/Nepal_Clash_1.0.0_%25281%2529.apk/file?dkey=7r8pbf1wg13&r=1006">
+            <i class="bi bi-download"></i> Download & Get NPR 5 Bonus
+        </a>
+    </div>
+
+    <!-- Modals -->
+    <!-- FAQ Modal (for nav link) -->
+    <div class="modal fade" id="faqModal" tabindex="-1" aria-labelledby="faqModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="faqModalLabel">Frequently Asked Questions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                     <!-- FAQ Content from main page is dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="privacyPolicyModalLabel">Privacy Policy</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Last Updated: [Date]</strong></p>
+            <p>This Privacy Policy describes how <span class="text-accent fw-bold">[Nepal Clash]</span> collects, uses, and protects your personal information when you use our mobile application and services.</p>
+            
+            <h6>1. Information We Collect</h6>
+            <ul>
+                <li><strong>Account Information:</strong> When you register, we collect details such as your name, email address, mobile number, and date of birth.</li>
+                <li><strong>Gameplay Data:</strong> We collect data related to your in-app activity, including tournaments joined, matches played, scores, and winnings.</li>
+                <li><strong>Device Information:</strong> We may collect information about your device, including model, operating system, unique device identifiers, and IP address to ensure fair play and for analytics.</li>
+                <li><strong>Transaction Data:</strong> Details of deposits and withdrawals made through supported payment gateways in Nepal.</li>
+            </ul>
+
+            <h6>2. How We Use Your Information</h6>
+            <ul>
+                <li>To create and manage your account.</li>
+                <li>To process transactions and facilitate withdrawals.</li>
+                <li>To monitor gameplay for fair play and prevent fraudulent activity.</li>
+                <li>To communicate with you about promotions, updates, and support issues.</li>
+                <li>To improve our services and user experience through analytics.</li>
+            </ul>
+
+            <h6>3. Data Security</h6>
+            <p>We implement robust security measures, including encryption and secure servers, to protect your personal information from unauthorized access, alteration, or disclosure.</p>
+
+            <h6>4. Third-Party Services</h6>
+            <p>We may use third-party services for payment processing and analytics. These services have their own privacy policies, and we recommend you review them. We do not sell or rent your personal data to third parties.</p>
+
+            <h6>5. Children's Privacy</h6>
+            <p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personal data from children. If we become aware that we have, we will take steps to delete such information.</p>
+
+            <h6>6. Your Rights</h6>
+            <p>You have the right to access, update, or delete your personal information. Please contact our support team to exercise these rights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="modal fade" id="termsConditionsModal" tabindex="-1" aria-labelledby="termsConditionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsConditionsModalLabel">Terms & Conditions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h6>1. Eligibility</h6>
+            <p>You must be 18 years of age or older and a resident of Nepal to create an account and participate in tournaments on <span class="text-accent fw-bold">[Nepal Clash]</span>.</p>
+
+            <h6>2. Account Rules</h6>
+            <ul>
+              <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+              <li>You are permitted to operate only one account. Creation of multiple accounts is a violation of our Fair Play Policy.</li>
+              <li>You must provide accurate and truthful information during registration and KYC verification.</li>
+            </ul>
+
+            <h6>3. Skill-Based Tournaments</h6>
+            <p>All tournaments on <span class="text-accent fw-bold">[Nepal Clash]</span> are "games of skill." The outcome is determined predominantly by the user's skill, not chance.</p>
+
+            <h6>4. Payments, Fees & Withdrawals</h6>
+            <ul>
+              <li>All transactions are in Nepalese Rupees (NPR).</li>
+              <li>We may charge a platform fee for participation in cash tournaments, which will be specified before you join.</li>
+              <li>Withdrawals are processed to verified Nepali digital wallets. We may require KYC verification before processing large withdrawals to comply with local regulations.</li>
+            </ul>
+            
+            <h6>5. Prohibited Conduct</h6>
+            <p>Users are prohibited from engaging in cheating, collusion, hacking, or any form of fraudulent activity. Violations will result in immediate account suspension and forfeiture of funds.</p>
+
+            <h6>6. Governing Law</h6>
+            <p>These terms shall be governed by and construed in accordance with the laws of Nepal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Refund & Cancellation Policy Modal -->
+    <div class="modal fade" id="refundPolicyModal" tabindex="-1" aria-labelledby="refundPolicyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="refundPolicyModalLabel">Refund & Cancellation Policy</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h6>1. General Policy</h6>
+            <p>Once a user joins a tournament on <span class="text-accent fw-bold">[Nepal Clash]</span>, the entry fee is non-refundable. Winnings are credited to the user's account, and losses are deducted accordingly.</p>
+            
+            <h6>2. When Refunds Are Applicable</h6>
+            <ul>
+              <li><strong>Tournament Cancellation:</strong> If a tournament is canceled by <span class="text-accent fw-bold">[Nepal Clash]</span> due to technical issues or other unforeseen circumstances, all entry fees for that tournament will be refunded to the participants' wallets.</li>
+              <li><strong>Duplicate Transactions:</strong> In the event of a deposit transaction being duplicated due to a technical error, the excess amount will be refunded to the source account.</li>
+            </ul>
+
+            <h6>3. How to Request a Refund</h6>
+            <p>To request a refund for an eligible transaction, please contact our customer support team with your transaction ID and a brief description of the issue. Our team will investigate the matter and process the refund within 5-7 business days if the claim is valid.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Fair Play Policy Modal -->
+    <div class="modal fade" id="fairPlayPolicyModal" tabindex="-1" aria-labelledby="fairPlayPolicyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fairPlayPolicyModalLabel">Fair Play Policy</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><span class="text-accent fw-bold">[Nepal Clash]</span> is committed to providing a fair and transparent gaming environment for all our users.</p>
+            
+            <h6>1. Anti-Cheat Stance</h6>
+            <p>We have a zero-tolerance policy towards any form of cheating. This includes the use of third-party software, hacks, scripts, or any unauthorized tools that provide an unfair advantage.</p>
+
+            <h6>2. One Account Rule</h6>
+            <p>Each player is allowed to have only one registered account on <span class="text-accent fw-bold">[Nepal Clash]</span>. Creating multiple accounts to gain an unfair advantage or collude with other players is strictly prohibited.</p>
+
+            <h6>3. Match Integrity</h6>
+            <p>Players are expected to play to the best of their ability in every match. Intentionally losing matches, colluding with opponents, or engaging in any form of match-fixing is a serious violation of our policy.</p>
+
+            <h6>4. Investigations & Penalties</h6>
+            <p>We actively monitor gameplay and user activity. Any account found in violation of our Fair Play Policy will be subject to penalties, including temporary suspension, permanent account termination, and forfeiture of all winnings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap 5.3.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- Swiper.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.game-swiper', {
+            loop: true,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Intersection Observer for Fade-in-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const elements = document.querySelectorAll('.fade-in-up');
+        elements.forEach(el => observer.observe(el));
+        
+        // Populate FAQ modal from main page content
+        const faqModal = document.getElementById('faqModal');
+        faqModal.addEventListener('show.bs.modal', function () {
+            const faqContent = document.getElementById('faqAccordion').innerHTML;
+            const modalBody = faqModal.querySelector('.modal-body');
+            modalBody.innerHTML = `<div class="accordion" id="faqAccordionModal">${faqContent}</div>`;
+        });
+    </script>
+</body>
+</html>
